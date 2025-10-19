@@ -1,0 +1,108 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Namibia Weather </title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Namibia local Weather, Holidays & Weekend Calendar<small>Widget</small></h1>
+      <nav>
+        <button id="btnWeather" class="nav-btn">Weather</button>
+        <button id="btnCalendar" class="nav-btn">Calendar</button>
+        <button id="btnCountdown" class="nav-btn">Weekend</button>
+      </nav>
+    </div>
+
+    <div class="controls">
+      <label class="toggle">
+        <input type="checkbox" id="themeToggle" />
+        <span class="slider-toggle"></span>
+      </label>
+      <button id="refreshWeather" title="Refresh weather">🔁</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- WEATHER PANEL -->
+    <section id="weatherPanel" class="card panel visible">
+      <div class="weather-top">
+        <div class="location">
+          <h2 id="locName">Windhoek, NA</h2>
+          <p id="localTime" class="muted">--:--:--</p>
+        </div>
+        <div class="weather-now">
+          <div id="weatherEmoji" class="big-emoji">☀️</div>
+          <div>
+            <div id="temp" class="temp">--°C</div>
+            <div id="conditions" class="muted">Loading...</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="weather-body">
+        <div class="weather-row">
+          <div class="small">Humidity</div>
+          <div id="humidity">--%</div>
+        </div>
+        <div class="weather-row">
+          <div class="small">Wind</div>
+          <div id="wind">-- m/s</div>
+        </div>
+        <div class="weather-row">
+          <div class="small">Sunrise / Sunset</div>
+          <div id="sunTimes">-- / --</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALENDAR PANEL -->
+    <section id="calendarPanel" class="card panel">
+      <div class="cal-header">
+        <button id="prevMonth" class="cal-nav">◀</button>
+        <h2 id="monthYear">Month Year</h2>
+        <button id="nextMonth" class="cal-nav">▶</button>
+      </div>
+
+      <div id="calendar" class="calendar-grid"></div>
+
+      <div class="cal-footer">
+        <div class="legend">
+          <span class="legend-item">💃 Weekend</span>
+          <span class="legend-item">🎉 Holiday</span>
+          <span class="legend-item">📝 Marked</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEEKEND COUNTDOWN -->
+    <section id="countdownPanel" class="card panel">
+      <h3>Weekend Countdown</h3>
+      <p class="muted">Countdown to Friday 17:00 (local)</p>
+      <div id="countdown" class="countdown">-- days --:--:--</div>
+    </section>
+  </main>
+
+  <!-- Simple modal for marking notes -->
+  <div id="noteModal" class="modal hidden">
+    <div class="modal-card">
+      <h4 id="noteModalTitle">Add note</h4>
+      <textarea id="noteText" rows="4" placeholder="Write a note for this date..."></textarea>
+      <div class="modal-actions">
+        <button id="saveNote">Save</button>
+        <button id="deleteNote" class="danger">Delete</button>
+        <button id="closeModal" class="muted">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <small>Created by Team MRT — Namibia Info Widget</small>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
