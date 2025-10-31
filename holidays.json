@@ -1,55 +1,121 @@
 {
-  "2024": [
-    {"date":"2024-01-01","name":"New Year's Day"},
-    {"date":"2024-02-25","name":"Mourning Day for President Hage Geingob"},
-    {"date":"2024-02-26","name":"Mourning Day (observed)"},
-    {"date":"2024-03-21","name":"Independence Day"},
-    {"date":"2024-03-29","name":"Good Friday"},
-    {"date":"2024-03-31","name":"Easter Sunday"},
-    {"date":"2024-04-01","name":"Easter Monday"},
-    {"date":"2024-05-01","name":"Workers' Day"},
-    {"date":"2024-05-04","name":"Cassinga Day"},
-    {"date":"2024-05-09","name":"Ascension Day"},
-    {"date":"2024-05-25","name":"Africa Day"},
-    {"date":"2024-05-28","name":"Genocide Remembrance Day"},
-    {"date":"2024-08-26","name":"Heroes' Day"},
-    {"date":"2024-12-10","name":"Day of the Namibian Women / Human Rights Day"},
-    {"date":"2024-12-25","name":"Christmas Day"},
-    {"date":"2024-12-26","name":"Family Day"}
-  ],
-  "2025": [
-    {"date":"2025-01-01","name":"New Year's Day"},
-    {"date":"2025-02-28","name":"Public Sector Memorial (Sam Nujoma events)"},
-    {"date":"2025-03-01","name":"Burial / National Event"},
-    {"date":"2025-03-21","name":"Independence Day"},
-    {"date":"2025-04-18","name":"Good Friday"},
-    {"date":"2025-04-20","name":"Easter Sunday"},
-    {"date":"2025-04-21","name":"Easter Monday"},
-    {"date":"2025-05-01","name":"Workers' Day"},
-    {"date":"2025-05-04","name":"Cassinga Day"},
-    {"date":"2025-05-05","name":"Cassinga Day (observed)"},
-    {"date":"2025-05-25","name":"Africa Day"},
-    {"date":"2025-05-26","name":"Africa Day (observed)"},
-    {"date":"2025-05-28","name":"Genocide Remembrance Day"},
-    {"date":"2025-08-26","name":"Heroes' Day"},
-    {"date":"2025-12-10","name":"Day of the Namibian Women / Human Rights Day"},
-    {"date":"2025-12-25","name":"Christmas Day"},
-    {"date":"2025-12-26","name":"Family Day"}
-  ],
-  "2026": [
-    {"date":"2026-01-01","name":"New Year's Day"},
-    {"date":"2026-03-21","name":"Independence Day"},
-    {"date":"2026-04-03","name":"Good Friday"},
-    {"date":"2026-04-05","name":"Easter Sunday"},
-    {"date":"2026-04-06","name":"Easter Monday"},
-    {"date":"2026-05-01","name":"Workers' Day"},
-    {"date":"2026-05-04","name":"Cassinga Day"},
-    {"date":"2026-05-14","name":"Ascension Day"},
-    {"date":"2026-05-25","name":"Africa Day"},
-    {"date":"2026-05-28","name":"Genocide Remembrance Day"},
-    {"date":"2026-08-26","name":"Heroes' Day"},
-    {"date":"2026-12-10","name":"Day of the Namibian Women / Human Rights Day"},
-    {"date":"2026-12-25","name":"Christmas Day"},
-    {"date":"2026-12-26","name":"Family Day"}
+  "country": "Namibia",
+  "years": [2025, 2026, 2027],
+  "notes": "Official Namibian public holidays for 2025–2027 (no in-lieu days). Easter-based holidays use easter_offset and will calculate correctly in the script.",
+  "holidays": [
+    {
+      "id": "new_year",
+      "name": "New Year's Day",
+      "type": "fixed",
+      "month": 1,
+      "day": 1,
+      "emoji": "🎉",
+      "description": "The first day of the year, celebrated on 1 January."
+    },
+    {
+      "id": "independence_day",
+      "name": "Independence Day",
+      "type": "fixed",
+      "month": 3,
+      "day": 21,
+      "emoji": "🎉",
+      "description": "Celebrates Namibia's independence from South Africa in 1990."
+    },
+    {
+      "id": "good_friday",
+      "name": "Good Friday",
+      "type": "easter_offset",
+      "offset": -2,
+      "emoji": "🎉",
+      "description": "Christian holiday commemorating the crucifixion of Jesus Christ."
+    },
+    {
+      "id": "easter_sunday",
+      "name": "Easter Sunday",
+      "type": "easter_offset",
+      "offset": 0,
+      "emoji": "🎉",
+      "description": "Christian celebration of the resurrection of Jesus Christ."
+    },
+    {
+      "id": "easter_monday",
+      "name": "Easter Monday",
+      "type": "easter_offset",
+      "offset": 1,
+      "emoji": "🎉",
+      "description": "Public holiday following Easter Sunday."
+    },
+    {
+      "id": "workers_day",
+      "name": "Workers' Day",
+      "type": "fixed",
+      "month": 5,
+      "day": 1,
+      "emoji": "🎉",
+      "description": "International Labour Day celebrating workers' rights."
+    },
+    {
+      "id": "cassinga_day",
+      "name": "Cassinga Day",
+      "type": "fixed",
+      "month": 5,
+      "day": 4,
+      "emoji": "🎉",
+      "description": "Commemorates the Cassinga massacre during the struggle for independence."
+    },
+    {
+      "id": "africa_day",
+      "name": "Africa Day",
+      "type": "fixed",
+      "month": 5,
+      "day": 25,
+      "emoji": "🎉",
+      "description": "Marks the founding of the Organisation of African Unity (OAU) in 1963."
+    },
+    {
+      "id": "ascension_day",
+      "name": "Ascension Day",
+      "type": "fixed",
+      "month": 5,
+      "day": 29,
+      "emoji": "🎉",
+      "description": "Christian observance 39 days after Easter Sunday."
+    },
+    {
+      "id": "heroes_day",
+      "name": "Heroes' Day",
+      "type": "fixed",
+      "month": 8,
+      "day": 26,
+      "emoji": "🎉",
+      "description": "Honours the heroes of Namibia's independence struggle."
+    },
+    {
+      "id": "human_rights_day",
+      "name": "Day of the Namibian Woman & International Human Rights Day",
+      "type": "fixed",
+      "month": 12,
+      "day": 10,
+      "emoji": "🎉",
+      "description": "Celebrates Namibian women and human rights worldwide."
+    },
+    {
+      "id": "christmas_day",
+      "name": "Christmas Day",
+      "type": "fixed",
+      "month": 12,
+      "day": 25,
+      "emoji": "🎉",
+      "description": "Christian holiday celebrating the birth of Jesus Christ."
+    },
+    {
+      "id": "family_day",
+      "name": "Family Day",
+      "type": "fixed",
+      "month": 12,
+      "day": 26,
+      "emoji": "🎉",
+      "description": "A public holiday following Christmas Day focused on family and togetherness."
+    }
   ]
 }
