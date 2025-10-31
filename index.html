@@ -1,108 +1,127 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Namibia Weather </title>
+  <title>Namibia Weather & Holiday Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header class="topbar">
-    <div class="brand">
-      <h1>Namibia local Weather, Holidays & Weekend Calendar<small>Widget</small></h1>
-      <nav>
-        <button id="btnWeather" class="nav-btn">Weather</button>
-        <button id="btnCalendar" class="nav-btn">Calendar</button>
-        <button id="btnCountdown" class="nav-btn">Weekend</button>
-      </nav>
-    </div>
+<body class="light">
+  <div id="app">
+    <header class="topbar">
+      <h1>Namibia Info Widget</h1>
+      <div class="controls">
+        <button id="modeToggle" aria-label="Toggle dark mode">🌙</button>
+        <button id="refreshBtn" aria-label="Refresh data">🔁 Refresh</button>
+      </div>
+    </header>
 
-    <div class="controls">
-      <label class="toggle">
-        <input type="checkbox" id="themeToggle" />
-        <span class="slider-toggle"></span>
-      </label>
-      <button id="refreshWeather" title="Refresh weather">🔁</button>
-    </div>
-  </header>
+    <main class="container">
+      <section class="left-column">
+        <!-- Calendar card -->
+        <div class="card calendar-card">
+          <div class="card-head">
+            <div class="cal-nav">
+              <button id="prevYear" title="Previous year">«</button>
+              <button id="prevMonth" title="Previous month">‹</button>
+              <div class="month-year" id="monthYear"></div>
+              <button id="nextMonth" title="Next month">›</button>
+              <button id="nextYear" title="Next year">»</button>
+            </div>
+            <div class="cal-actions">
+              <button id="todayBtn">Today</button>
+              <button id="addEventBtn">Add Event</button>
+            </div>
+          </div>
 
-  <main class="container">
-    <!-- WEATHER PANEL -->
-    <section id="weatherPanel" class="card panel visible">
-      <div class="weather-top">
-        <div class="location">
-          <h2 id="locName">Windhoek, NA</h2>
-          <p id="localTime" class="muted">--:--:--</p>
-        </div>
-        <div class="weather-now">
-          <div id="weatherEmoji" class="big-emoji">☀️</div>
-          <div>
-            <div id="temp" class="temp">--°C</div>
-            <div id="conditions" class="muted">Loading...</div>
+          <div id="calendar" class="calendar-grid"></div>
+
+          <div class="calendar-footer">
+            <div class="legend">
+              <span>🎉 Holiday</span>
+              <span>🕺 Weekend</span>
+          
+            </div>
+            <div class="upcoming">
+              <h3>Upcoming Holidays</h3>
+              <ul id="upcomingList"></ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="weather-body">
-        <div class="weather-row">
-          <div class="small">Humidity</div>
-          <div id="humidity">--%</div>
+      
+      </section>
+
+      <aside class="right-column">
+        <!-- Weather card -->
+        <div class="card weather-card">
+          <div class="weather-top">
+            <div>
+              <h2 id="locName">Windhoek, Namibia</h2>
+              <div id="liveDateTime" class="small"></div>
+            </div>
+            <div class="weather-main">
+              <div id="weatherEmoji" class="weather-emoji">☀️</div>
+              <div>
+                <div id="temperature" class="large">--°C</div>
+                <div id="condition" class="small">--</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="weather-controls">
+            <input id="searchInput" placeholder="Search town/region in Namibia" />
+            <div class="search-buttons">
+              <button id="searchBtn">🔍 Search</button>
+              <button id="geoBtn" title="Use my location">📍</button>
+            </div>
+          </div>
+
+          <div class="weather-details">
+            <div>Feels like: <span id="feelsLike">--°C</span></div>
+            <div>Wind: <span id="wind">-- m/s</span></div>
+            <div>Humidity: <span id="humidity">--%</span></div>
+          </div>
+
         </div>
-        <div class="weather-row">
-          <div class="small">Wind</div>
-          <div id="wind">-- m/s</div>
+
+        
+<div class="card events-card">
+  <h3>Marked Events</h3>
+  <ul id="eventsList"></ul>
+</div>
+
+
+<!-- Countdown card -->
+        <div class="card countdown-card">
+          <h2>Countdown to Friday</h2>
+          <div id="countdown" class="countdown-display">—</div>
         </div>
-        <div class="weather-row">
-          <div class="small">Sunrise / Sunset</div>
-          <div id="sunTimes">-- / --</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- CALENDAR PANEL -->
-    <section id="calendarPanel" class="card panel">
-      <div class="cal-header">
-        <button id="prevMonth" class="cal-nav">◀</button>
-        <h2 id="monthYear">Month Year</h2>
-        <button id="nextMonth" class="cal-nav">▶</button>
-      </div>
+      </aside>
+    </main>
+  </div>
 
-      <div id="calendar" class="calendar-grid"></div>
-
-      <div class="cal-footer">
-        <div class="legend">
-          <span class="legend-item">💃 Weekend</span>
-          <span class="legend-item">🎉 Holiday</span>
-          <span class="legend-item">📝 Marked</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- WEEKEND COUNTDOWN -->
-    <section id="countdownPanel" class="card panel">
-      <h3>Weekend Countdown</h3>
-      <p class="muted">Countdown to Friday 17:00 (local)</p>
-      <div id="countdown" class="countdown">-- days --:--:--</div>
-    </section>
-  </main>
-
-  <!-- Simple modal for marking notes -->
-  <div id="noteModal" class="modal hidden">
-    <div class="modal-card">
-      <h4 id="noteModalTitle">Add note</h4>
-      <textarea id="noteText" rows="4" placeholder="Write a note for this date..."></textarea>
+  <!-- Modals -->
+  <div id="modalBackdrop" class="modal-backdrop hidden">
+    <div class="modal">
+      <h3 id="modalTitle">Modal</h3>
+      <div id="modalBody"></div>
       <div class="modal-actions">
-        <button id="saveNote">Save</button>
-        <button id="deleteNote" class="danger">Delete</button>
-        <button id="closeModal" class="muted">Close</button>
+        <button id="modalCancel">Cancel</button>
+        <button id="modalSave">Save</button>
+        
       </div>
     </div>
   </div>
 
-  <footer class="site-footer">
-    <small>Created by Team MRT — Namibia Info Widget</small>
-  </footer>
+  <!-- Small refreshing overlay -->
+  <div id="refreshOverlay" class="refresh-overlay hidden">Refreshing...</div>
 
   <script src="script.js" defer></script>
+
+   <footer>
+        Namibian Info Widget &copy; Created by Team MRT
+    </footer>
 </body>
 </html>
